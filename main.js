@@ -1,4 +1,5 @@
 import {GameStateManager} from '/game/gamestates/GameStateManager.js'
+import {controls} from './controls/controls.js'
 import {TestState} from '/game/gamestates/TestState.js'
 
 var canvas = document.getElementById("game-container");
@@ -9,8 +10,10 @@ var y = 0;
 
 //Init Manager
 var state = new TestState();
-var manager = new GameStateManager(state)
-var state2 = new TestState();
+var controller = new controls(document);
+
+var manager = new GameStateManager(state, controller);
+
 
 //Test
 window.addEventListener('load', () => {
@@ -27,22 +30,9 @@ window.addEventListener('resize', () => {
 }, false);
 
 
+
 function draw(manager){
-    manager.draw(canvas, ctx);
-    var curr = manager.getCurrentState().y;
-   
-    
-    if(curr === 200){
-        console.log("New State Added");
-        manager.newState(state2);
-    }
-
-    if(curr === 400){
-        console.log("Current State Removed");
-        manager.endCurrentState();
-    }
+    manager.draw(canvas,ctx);
 }
-
-
 
 setInterval(() => {draw(manager)}, 16);
