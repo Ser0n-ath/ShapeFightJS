@@ -1,2 +1,2 @@
 # ShapeFightJS
--A 2d multiplayer platformer game to learn javascript
+-A 2d multiplayer platformer game rewritten
